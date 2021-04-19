@@ -54,8 +54,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.courosel.style.left ='0px' 
     }else if(inner.right < outer.right){
       this.courosel.style.left = -(inner.width - outer.width)+'px'
+      
     }
-    
+
   }
 
   left(){
