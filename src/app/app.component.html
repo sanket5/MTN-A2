@@ -1,32 +1,44 @@
 
 <div class="base">
-    
+    <app-navbar></app-navbar>
   <div class="container">
       <div class="courosel" (mousedown)="select($event)" 
           (mouseenter)="drag($event)" 
           (mousemove)="mouseMove($event)" >
-              <div class="item">
+              <div class="item" >
                   <div class="item_content">
-                      Action One
+                    <img src="https://picsum.photos/1000/500" alt="">
+                </div>
+              </div>
+              <div class="item">
+                  <div class="item_content">  
+                      <img src="https://picsum.photos/1000/501" alt="">
                   </div>
               </div>
               <div class="item">
-                  <div class="item_content">  Action Two</div>
+                  <div class="item_content">  
+                    <div class="item_content">  
+                        <img src="https://picsum.photos/1002/500" alt="">
+                    </div>
+                 </div>
               </div>
               <div class="item">
-                  <div class="item_content">  Action Three </div>
+                  <div class="item_content">  
+                    <div class="item_content">  
+                        <img src="https://picsum.photos/1003/500" alt="">
+                    </div>
+                </div>
               </div>
               <div class="item">
-                  <div class="item_content">  Action Four </div>
-              </div>
-              <div class="item">
-                  <div class="item_content">  Action Five </div>
+                  <div class="item_content"> 
+                    <img src="https://picsum.photos/1004/500" alt="">
+                    </div>
               </div>
       </div>
   </div>
   <div class="buttons">
-      <button class="btn btn-info"  (click)="left()" >left</button>
-      <button class="btn btn-info" (click)="right()">right</button>
+      <button class="btn btn-info"  (click)="left()" > < </button>
+      <button class="btn btn-info" (click)="right()"> > </button>
   </div>
 
 </div>
