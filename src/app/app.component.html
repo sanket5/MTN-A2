@@ -1,0 +1,32 @@
+
+<div class="base">
+    
+  <div class="container">
+      <div class="courosel" (mousedown)="select($event)" 
+          (mouseenter)="drag($event)" 
+          (mousemove)="mouseMove($event)" >
+              <div class="item">
+                  <div class="item_content">
+                      Action One
+                  </div>
+              </div>
+              <div class="item">
+                  <div class="item_content">  Action Two</div>
+              </div>
+              <div class="item">
+                  <div class="item_content">  Action Three </div>
+              </div>
+              <div class="item">
+                  <div class="item_content">  Action Four </div>
+              </div>
+              <div class="item">
+                  <div class="item_content">  Action Five </div>
+              </div>
+      </div>
+  </div>
+  <div class="buttons">
+      <button class="btn btn-info"  (click)="left()" >left</button>
+      <button class="btn btn-info" (click)="right()">right</button>
+  </div>
+
+</div>
