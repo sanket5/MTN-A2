@@ -3,7 +3,51 @@
     margin: 0;
 }
 
-
+.navbar{
+    height: 80px;
+    background-color: white;
+}
 .navbar-brand, .navbar-collapse{
     margin: 0 30px;
+}
+.navbar-brand{
+    position: absolute;
+    left: 3%;
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #FFC300;
+    border: white solid 7px ;
+    z-index: 10;
+}
+
+.nav-left{
+    margin-left: 10%;
+}
+
+.nav-link{
+    font-size: 16px;
+    margin-left: 40px;
+    font-weight: 400;
+}
+.round{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFC300
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    background-color: teal;
+    border-radius: 50%;
+    color: white;
 }
