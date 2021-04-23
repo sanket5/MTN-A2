@@ -173,11 +173,14 @@ body {
 .item-content{
     width: 80px;
     height: 80px;
-    border: 2px solid #302929;
+    /* border: 2px solid #302929;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: black; */
+    background-image: url('../assets/images/box.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 /* .item-content::after{
     

@@ -6,6 +6,7 @@
 .navbar{
     height: 80px;
     background-color: white;
+    border-top: 5px solid black;
 }
 .navbar-brand, .navbar-collapse{
     margin: 0 30px;
@@ -50,4 +51,5 @@
     background-color: teal;
     border-radius: 50%;
     color: white;
+    font-size: 25px;
 }
