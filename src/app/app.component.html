@@ -1,90 +1,8 @@
-<!-- 
-<div class="base">
-    <app-navbar></app-navbar>
-  <div class="container">
-      <div class="courosel" (mousedown)="select($event)" 
-          (mouseenter)="drag($event)" 
-          (mousemove)="mouseMove($event)">
-              <div class="item" >
-                  <div class="item_content">
-                    <img src="https://picsum.photos/1000/500" alt="">
-                </div>
-              </div>
-              <div class="item">
-                  <div class="item_content">  
-                      <img src="https://picsum.photos/1000/501" alt="">
-                  </div>
-              </div>
-              <div class="item">
-                  <div class="item_content">  
-                    <div class="item_content">  
-                        <img src="https://picsum.photos/1002/500" alt="">
-                    </div>
-                 </div>
-              </div>
-              <div class="item">
-                  <div class="item_content">  
-                    <div class="item_content">  
-                        <img src="https://picsum.photos/1003/500" alt="">
-                    </div>
-                </div>
-              </div>
-              <div class="item">
-                  <div class="item_content"> 
-                    <img src="https://picsum.photos/1004/500" alt="">
-                    </div>
-              </div>
-      </div>
-  </div>
-  <div class="buttons">
-      <button class="btn btn-info"  (click)="left()" > < </button>
-      <button class="btn btn-info" (click)="right()"> > </button>
-  </div>
 
-</div>
- -->
-
-<!-- 
-    <div class="caurosal_container">
-        <div #container class="courosal_inner">
-            <div #cell class="item">
-                <div class="item_content">
-                    item 2
-                </div> 
-            </div>
-            <div class=" item">
-                <div class="item_content">
-                    item 3
-                </div> 
-            </div>
-            <div class="item">
-                <div class="item_content">
-                    item 4
-                </div> 
-            </div>
-            <div class="item">
-                <div class="item_content">
-                    item 5
-                </div> 
-            </div>
-            <div class="item">
-                <div class="item_content">
-                    item 6
-                </div>
-            </div>    
-        </div>
-        <div class="pre" >  </div>
-        <div class="next" >  </div>
-     </div>
- -->
-
-<app-navbar>  </app-navbar>
- <main class="caurosal_container">
+<div class="container_g">
+  <app-navbar>  </app-navbar>
+ <div class="caurosal_container">
     <div #container class="courosal_inner">
-      <div #cell class="item">
-        <div class="item-content"> </div>
-        <div class="item-title"> Get a Device </div>
-      </div>
       <div #cell class="item">
         <div class="item-content"> </div>
         <div class="item-title"> Mobile Internet </div>
@@ -92,6 +10,10 @@
       <div #cell class="item">
         <div class="item-content"> </div>
         <div class="item-title"> Home Internet </div>
+      </div>
+      <div #cell class="item">  
+        <div class="item-content"> </div>
+        <div class="item-title"> Get a Device </div>
       </div>
       <div #cell class="item">
         <div class="item-content"></div>
@@ -104,10 +26,11 @@
     </div>
     <div class="description"> 
         <div> What are you </div>
-        <div> <b> Here to do ? </b> </div>
+        <div> <b> here to do ? </b> </div>
     </div>
-  </main>
+  </div>
   <div class="next" (click)="animateSlides(1)"></div>
+  
   <div class="pre" (click)="animateSlides(-1)"></div>
   
-  
+</div>

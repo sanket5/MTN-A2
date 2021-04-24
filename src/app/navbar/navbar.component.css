@@ -8,25 +8,34 @@
     background-color: white;
     border-top: 5px solid black;
 }
+.navbar:after{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    border-top: 5px solid #FFC300 ;
+    width: 100px;
+}
+
 .navbar-brand, .navbar-collapse{
-    margin: 0 30px;
+    margin: 0 5%
 }
 .navbar-brand{
     position: absolute;
-    left: 3%;
-    top: 15%;
+    left: 80px;
+    top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 96px;
+    height: 96px;
     background-color: #FFC300;
     border: white solid 7px ;
     z-index: 10;
 }
 
 .nav-left{
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .nav-link{

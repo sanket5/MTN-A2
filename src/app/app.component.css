@@ -124,9 +124,16 @@ body {
   min-height: 100%;
   font-family: Roboto, sans-serif;
   background: #e2e0e0;
+
+}
+
+.container_g{
+    overflow-x: hidden;
 }
 
 .caurosal_container{
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,7 +146,7 @@ body {
 
 .courosal_inner{
     position: relative;
-    width: 80%;
+    width: 100%;
     height: 100%;
     overflow: hidden;   
     background: repeating-linear-gradient(
@@ -154,7 +161,7 @@ body {
 
 .item{
     position: absolute;
-    top:20%;
+    top:15%;
     height: 284px;
     width: 216px;
     font-size: 20px;
@@ -198,33 +205,36 @@ body {
 
 
 .item-title{
-    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     text-align: center;
     color: black;
     font-weight: 500;
+    word-wrap: break-word;
 }
 
 .pre{
     position: absolute;
     left: 30%;
-    top: 85vh;
-    background-image: url('../assets/svgs/pre.svg');
+    top: 87vh;
+    background-image: url(../assets/svgs/pre.svg);
     background-repeat: no-repeat;
     background-position: left;
-    width: 7%;
-    height:7%;
+    width: 40px;
+    height:40px;
     opacity: 0.7;
 }
 
 .next{
     position: absolute;
     right: 30%;
-    top: 85vh;
+    top: 87vh;
     background-image: url('../assets/svgs/next.svg');
     background-repeat: no-repeat;
     background-position: left;
-    width: 7%;
-    height:7%;
+    width: 40px;
+    height:40px;
     opacity: 0.7;
 }
 
@@ -238,8 +248,8 @@ app-navbar{
 
 .description{
     position: absolute;
-    top: 10%;
-    left: 17%;
-    font-size: 40px;
+    top: 7%;
+    left: 20%;
+    font-size: 30px;
 
 }
