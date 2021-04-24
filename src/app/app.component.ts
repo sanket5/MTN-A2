@@ -119,17 +119,16 @@ export class AppComponent implements OnInit, AfterViewInit {
           yoyo: true,
           translateY:90,
           borderBottomColor:"#FFC300",
-          wordSpacing: 5
         },
         0.5 - this.cellStep
       )
-       const tlm2 = new TimelineMax({repeat:1})
-        .to(textElem, 1 , { 
-            wordSpacing:500
-        } ,0)
+      //  const tlm2 = new TimelineMax({repeat:1})
+      //   .to(textElem, 1 , { 
+      //       wordSpacing:500
+      //   } ,0)
        
     this.baseTL.add(tlm, index * -this.cellStep);
-    this.baseTL.add(tlm2, index * -this.cellStep)
+    // this.baseTL.add(tlm2, index * -this.cellStep)
   }
 
   snapX(x): number {

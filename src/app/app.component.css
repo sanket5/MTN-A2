@@ -253,3 +253,10 @@ app-navbar{
     font-size: 30px;
 
 }
+
+.item-message{
+    text-align: center;
+    font-size:8px;
+    font-weight: bolder;
+    color: black;
+}
