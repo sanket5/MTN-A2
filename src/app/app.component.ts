@@ -31,10 +31,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChildren('cell') cell: QueryList<ElementRef>;
 
 
+
   ngOnInit(): void {
     gsap.registerPlugin(Draggable);
     gsap.defaults({ ease: 'none' });
-    this.titleDiv = document.querySelector('.item-title');
 
   }
 
@@ -45,10 +45,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   init(): void {
     this.numCells = this.cell.length;
-    this.cellStep = 1 / this.numCells;
-    this.wrapWidth = (this.cellWidth * this.numCells * 1.5);
+    this.cellStep = 1 / this.numCells
+    this.wrapWidth = (this.cellWidth * this.numCells);
     this.proxy = this.render.createElement('div');
-    TweenLite.set(this.proxy, { x: '+=0' });
+    TweenLite.set(this.proxy, { x: '+=0'});
     this.picker = this.container.nativeElement;
   }
 
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   createTimeline(): void {
     TweenLite.set(this.picker, {
-      width: (this.wrapWidth - this.cellWidth)
+      width: (this.wrapWidth ),
     });
   }
 
@@ -80,7 +80,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   drag(): void {
     console.log('draging');
-
     this.draggable = new Draggable(this.proxy, {
       type: 'x',
       trigger: this.picker,
@@ -101,12 +100,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     TweenLite.set(ele, {
       width: this.cellWidth ,
       scale: 0.6,
-      x: -this.cellWidth,
+      x: -this.cellWidth*2.5,
     });
-    const textElem = ele.getElementsByClassName('item-title');
-    TweenLite.set(textElem, {
-      wordSpacing: 'normal'
-    });
+    let celltitleElem = ele.getElementsByClassName('item-title')
+    let itemMessageEle = ele.getElementsByClassName('item-message')
+
+    TweenLite.set(celltitleElem,{
+      paddingRight:60,
+      paddingLeft:60
+    })
+
+    TweenLite.set(itemMessageEle,{
+      display:'none'
+    })
 
     const tlm = new TimelineMax({ repeat: 1 })
       .to(ele, 1, { x: `+=${this.wrapWidth}` }, 0)
@@ -121,7 +127,19 @@ export class AppComponent implements OnInit, AfterViewInit {
           borderBottomColor: '#FFC300',
         },
         0.5 - this.cellStep
-      );
+      )
+      .to(celltitleElem, {
+          padding: 0,
+          yoyo: true,
+          repeat:1
+      },0)
+      .to(itemMessageEle, this.cellStep,{
+          display:'block',
+          yoyo:true,
+          repeat:1
+      },this.cellStep)
+
+      
       //  const tlm2 = new TimelineMax({repeat:1})
       //   .to(textElem, 1 , {
       //       wordSpacing:500
@@ -146,8 +164,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   animateSlides(direction: number): void{
     const position = gsap.getProperty(this.proxy, 'x');
     console.log(position);
-    const x = this.snapX( ( position as number) + direction * this.cellWidth  );
-    console.log(x);
+    let x = this.snapX( ( position as number) + direction * this.cellWidth );
+    x = x *2
     TweenLite.to(this.proxy, 1, {
       x,
       onUpdate: () => {
@@ -168,6 +186,72 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
 
+// TweenLite.defaultEase = Linear.easeNone;
+
+// var picker = document.querySelector(".picker");
+// var cells = document.querySelectorAll(".cell");
+// var proxy = document.createElement("div");
+
+// var cellWidth = 450;
+// //var rotationX = 90;
+
+// var numCells = cells.length;
+// var cellStep = 1 / numCells;
+// var wrapWidth = cellWidth * numCells;
+
+// var baseTl = new TimelineMax({ paused: true });
+
+// TweenLite.set(picker, {
+//   //perspective: 1100,
+//   width: wrapWidth - cellWidth
+// });
+
+// for (var i = 0; i < cells.length; i++) {  
+//   initCell(cells[i], i);
+// }
+
+// var animation = new TimelineMax({ repeat: -1, paused: true })
+//   .add(baseTl.tweenFromTo(1, 2))
+
+// var draggable = new Draggable(proxy, {  
+//   // allowContextMenu: true,  
+//   type: "x",
+//   trigger: picker,
+//   throwProps: true,
+//   onDrag: updateProgress,
+//   onThrowUpdate: updateProgress,
+//   snap: { 
+//     x: snapX
+//   },
+//   onThrowComplete: function(){
+//     console.log("onThrowComplete");
+//     //TODO: animation that inject selected card title
+//   }
+// });
+
+// function snapX(x) {
+//   return Math.round(x / cellWidth) * cellWidth;
+// }
+
+// function updateProgress() {  
+//   animation.progress(this.x / wrapWidth);
+// }
+
+// function initCell(element, index) {
+  
+//   TweenLite.set(element, {
+//     width: cellWidth,
+//     scale: 0.6,
+//     //rotationX: rotationX,
+//     x: -cellWidth
+//   });
+  
+//   var tl = new TimelineMax({ repeat: 1 })
+//     .to(element, 1, { x: "+=" + wrapWidth/*, rotationX: -rotationX*/ }, 0)
+//     .to(element, cellStep, { color: "#009688", scale: 1, repeat: 1, yoyo: true }, 0.5 - cellStep)
+  
+//   baseTl.add(tl, i * -cellStep);
+// }
 
 
 
