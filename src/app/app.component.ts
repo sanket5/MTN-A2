@@ -45,10 +45,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   init(): void {
     this.numCells = this.cell.length;
-    this.cellStep = 1 / this.numCells
+    this.cellStep = 1 / this.numCells;
     this.wrapWidth = (this.cellWidth * this.numCells);
     this.proxy = this.render.createElement('div');
-    TweenLite.set(this.proxy, { x:'+=0'});
+    TweenLite.set(this.proxy, { x: '+=0'});
     this.picker = this.container.nativeElement;
   }
 
@@ -100,27 +100,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     TweenLite.set(ele, {
       width: this.cellWidth ,
       scale: 0.6,
-      x: -this.cellWidth*3,
+      x: -this.cellWidth * 3,
     });
 
-    let celltitleElem = ele.getElementsByClassName('item-title')
-    let itemMessageEle = ele.getElementsByClassName('item-message')
+    const celltitleElem = ele.getElementsByClassName('item-title');
+    const itemMessageEle = ele.getElementsByClassName('item-message');
 
-    TweenLite.set(celltitleElem,{
-      paddingRight:60,
-      paddingLeft:60
-    })
+    TweenLite.set(celltitleElem, {
+      paddingRight: 60,
+      paddingLeft: 60
+    });
 
-    TweenLite.set(itemMessageEle,{
-      display:'none'
-    })
+    TweenLite.set(itemMessageEle, {
+      display: 'none'
+    });
 
     const tlm = gsap.timeline({ repeat: 1 })
 
-      .to(ele, { x: `+=${this.wrapWidth}`, duration:1, }, 0)
-      .to(ele, 
+      .to(ele, { x: `+=${this.wrapWidth}`, duration: 1, }, 0)
+      .to(ele,
         {
-          duration:this.cellStep,
+          duration: this.cellStep,
           color: '#000000',
           scaleX: 1.266,
           scaleY: 1.191,
@@ -133,19 +133,19 @@ export class AppComponent implements OnInit, AfterViewInit {
         0.4
       )
       .to(celltitleElem, {
-        duration:this.cellStep,
+        duration: this.cellStep,
           padding: 0,
           yoyo: true,
-          repeat:1
+          repeat: 1
       }, 0.4)
       .to(itemMessageEle, {
-          duration:this.cellStep*0.667,
-          display:'block',
-          yoyo:true,
-          repeat:1
-      }, 0.4 )
+          duration: this.cellStep * 0.667,
+          display: 'block',
+          yoyo: true,
+          repeat: 1
+      }, 0.4 );
 
-      
+
       //  const tlm2 = new TimelineMax({repeat:1})
       //   .to(textElem, 1 , {
       //       wordSpacing:500
@@ -170,7 +170,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log(window.screen.width);
     const position = gsap.getProperty(this.proxy, 'x');
     // let x = this.snapX( ( position as number) + direction * this.cellWidth );
-    let x = gsap.utils.snap( this.cellWidth, ( (position as number) + direction * this.cellWidth ) )
+    const x = gsap.utils.snap( this.cellWidth, ( (position as number) + direction * this.cellWidth ) );
     // if (x> this.wrapWidth){
     //   x -= x-this.cellWidth
     // }
@@ -178,17 +178,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     //   x += this.cellWidth
     // }
     console.log(x);
-    
+
     gsap.to(this.proxy, {
         x,
         onUpdate: () => {
           // this.animation.progress( (x as number) / (this.wrapWidth ))
           gsap.to(this.animation,
-            { 
+            {
               duration: this.cellStep,
-              progress:gsap.utils.wrap(0, 1, (x as number) / this.wrapWidth),
-              yoyo: true,              
-            })
+              progress: gsap.utils.wrap(0, 1, (x as number) / this.wrapWidth),
+              yoyo: true,
+            });
       }
     });
   }
@@ -225,21 +225,21 @@ export class AppComponent implements OnInit, AfterViewInit {
 //   width: wrapWidth - cellWidth
 // });
 
-// for (var i = 0; i < cells.length; i++) {  
+// for (var i = 0; i < cells.length; i++) {
 //   initCell(cells[i], i);
 // }
 
 // var animation = new TimelineMax({ repeat: -1, paused: true })
 //   .add(baseTl.tweenFromTo(1, 2))
 
-// var draggable = new Draggable(proxy, {  
-//   // allowContextMenu: true,  
+// var draggable = new Draggable(proxy, {
+//   // allowContextMenu: true,
 //   type: "x",
 //   trigger: picker,
 //   throwProps: true,
 //   onDrag: updateProgress,
 //   onThrowUpdate: updateProgress,
-//   snap: { 
+//   snap: {
 //     x: snapX
 //   },
 //   onThrowComplete: function(){
@@ -252,23 +252,23 @@ export class AppComponent implements OnInit, AfterViewInit {
 //   return Math.round(x / cellWidth) * cellWidth;
 // }
 
-// function updateProgress() {  
+// function updateProgress() {
 //   animation.progress(this.x / wrapWidth);
 // }
 
 // function initCell(element, index) {
-  
+
 //   TweenLite.set(element, {
 //     width: cellWidth,
 //     scale: 0.6,
 //     //rotationX: rotationX,
 //     x: -cellWidth
 //   });
-  
+
 //   var tl = new TimelineMax({ repeat: 1 })
 //     .to(element, 1, { x: "+=" + wrapWidth/*, rotationX: -rotationX*/ }, 0)
 //     .to(element, cellStep, { color: "#009688", scale: 1, repeat: 1, yoyo: true }, 0.5 - cellStep)
-  
+
 //   baseTl.add(tl, i * -cellStep);
 // }
 
