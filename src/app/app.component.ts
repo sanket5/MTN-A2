@@ -117,7 +117,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     const tlm = gsap.timeline({ repeat: 1 })
 
-      .to(ele, { x: `+=${this.wrapWidth}`, duration:1 }, 0)
+      .to(ele, { x: `+=${this.wrapWidth}`, duration:1, }, 0)
       .to(ele, 
         {
           duration:this.cellStep,
@@ -139,7 +139,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           repeat:1
       }, 0.4)
       .to(itemMessageEle, {
-          duration:this.cellStep,
+          duration:this.cellStep*0.667,
           display:'block',
           yoyo:true,
           repeat:1
@@ -168,20 +168,27 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   animateSlides(direction: number): void{
     console.log(window.screen.width);
-    
     const position = gsap.getProperty(this.proxy, 'x');
     // let x = this.snapX( ( position as number) + direction * this.cellWidth );
     let x = gsap.utils.snap( this.cellWidth, ( (position as number) + direction * this.cellWidth ) )
-    if (x>= this.wrapWidth){
-      x = 0
-    }
-    else if (x<0){
-      x = this.wrapWidth- this.cellWidth
-    }
+    // if (x> this.wrapWidth){
+    //   x -= x-this.cellWidth
+    // }
+    // else if (x<=0){
+    //   x += this.cellWidth
+    // }
+    console.log(x);
+    
     gsap.to(this.proxy, {
         x,
         onUpdate: () => {
-          this.animation.progress( x / (this.wrapWidth ));
+          // this.animation.progress( (x as number) / (this.wrapWidth ))
+          gsap.to(this.animation,
+            { 
+              duration: this.cellStep,
+              progress:gsap.utils.wrap(0, 1, (x as number) / this.wrapWidth),
+              yoyo: true,              
+            })
       }
     });
   }

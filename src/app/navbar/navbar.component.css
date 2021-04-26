@@ -22,13 +22,13 @@
 }
 .navbar-brand{
     position: absolute;
-    left: 50px;
-    top: 5%;
+    left: 60px;
+    top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 96px;
-    height: 96px;
+    width: 75px;
+    height: 75px;
     background-color: #FFC300;
     border: white solid 7px ;
     z-index: 10;
