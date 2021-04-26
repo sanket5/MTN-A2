@@ -48,7 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.cellStep = 1 / this.numCells
     this.wrapWidth = (this.cellWidth * this.numCells);
     this.proxy = this.render.createElement('div');
-    TweenLite.set(this.proxy, { x: '+=0'});
+    TweenLite.set(this.proxy, { x:'+=0'});
     this.picker = this.container.nativeElement;
   }
 
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   createTimeline(): void {
     TweenLite.set(this.picker, {
-      width: (this.wrapWidth ),
+      width: (this.wrapWidth),
     });
   }
 
@@ -100,8 +100,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     TweenLite.set(ele, {
       width: this.cellWidth ,
       scale: 0.6,
-      x: -this.cellWidth*2.5,
+      x: -this.cellWidth*3,
     });
+
     let celltitleElem = ele.getElementsByClassName('item-title')
     let itemMessageEle = ele.getElementsByClassName('item-message')
 
@@ -114,30 +115,35 @@ export class AppComponent implements OnInit, AfterViewInit {
       display:'none'
     })
 
-    const tlm = new TimelineMax({ repeat: 1 })
-      .to(ele, 1, { x: `+=${this.wrapWidth}` }, 0)
-      .to(ele, this.cellStep,
+    const tlm = gsap.timeline({ repeat: 1 })
+
+      .to(ele, { x: `+=${this.wrapWidth}`, duration:1 }, 0)
+      .to(ele, 
         {
+          duration:this.cellStep,
           color: '#000000',
           scaleX: 1.266,
           scaleY: 1.191,
+          // scale:1,
           repeat: 1,
           yoyo: true,
-          translateY: 90,
+          y: 90,
           borderBottomColor: '#FFC300',
         },
-        0.5 - this.cellStep
+        0.4
       )
       .to(celltitleElem, {
+        duration:this.cellStep,
           padding: 0,
           yoyo: true,
           repeat:1
-      },0)
-      .to(itemMessageEle, this.cellStep,{
+      }, 0.4)
+      .to(itemMessageEle, {
+          duration:this.cellStep,
           display:'block',
           yoyo:true,
           repeat:1
-      },this.cellStep)
+      }, 0.4 )
 
       
       //  const tlm2 = new TimelineMax({repeat:1})
@@ -155,21 +161,27 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   updateProgress(): void {
     console.log('updaetd');
-
     this.animation.progress(
       gsap.utils.wrap(0, 1, (this.draggable.x as number) / this.wrapWidth)
     );
   }
 
   animateSlides(direction: number): void{
+    console.log(window.screen.width);
+    
     const position = gsap.getProperty(this.proxy, 'x');
-    console.log(position);
-    let x = this.snapX( ( position as number) + direction * this.cellWidth );
-    x = x *2
-    TweenLite.to(this.proxy, 1, {
-      x,
-      onUpdate: () => {
-        this.animation.progress( ( position as number) / this.wrapWidth);
+    // let x = this.snapX( ( position as number) + direction * this.cellWidth );
+    let x = gsap.utils.snap( this.cellWidth, ( (position as number) + direction * this.cellWidth ) )
+    if (x>= this.wrapWidth){
+      x = 0
+    }
+    else if (x<0){
+      x = this.wrapWidth- this.cellWidth
+    }
+    gsap.to(this.proxy, {
+        x,
+        onUpdate: () => {
+          this.animation.progress( x / (this.wrapWidth ));
       }
     });
   }

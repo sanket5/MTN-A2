@@ -220,7 +220,7 @@ body {
 
 .pre{
     position: absolute;
-    left: 30%;
+    left: 32%;
     top: 87vh;
     background-image: url(../assets/svgs/pre.svg);
     background-repeat: no-repeat;
@@ -232,7 +232,7 @@ body {
 
 .next{
     position: absolute;
-    right: 30%;
+    right: 32%;
     top: 87vh;
     background-image: url('../assets/svgs/next.svg');
     background-repeat: no-repeat;
@@ -252,8 +252,8 @@ app-navbar{
 
 .description{
     position: absolute;
-    top: 7%;
-    left: 20%;
+    top: 9%;
+    left: 23%;
     font-size: 30px;
 
 }
